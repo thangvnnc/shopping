@@ -23,6 +23,7 @@
     "mongoose": "^5.10.10",
     "mongoose-auto-increment": "^5.0.1",
     "mongoose-unique-validator": "^2.0.3",
+    "mysql": "^2.18.1",
     "path": "^0.12.7"
   }
 }
