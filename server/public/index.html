@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.btn-login').on('click', function() {
+                var username = $('.ip-username').val();
+                var password = $('.ip-password').val();
+                $.ajax({
+                    url: "/login",
+                    data: {
+                        username: username,
+                        password: password
+                    },
+                    method: "GET",
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+
+            $('.btn-valid').on('click', function() {
+                $.ajax({
+                    url: "/testAuth",
+                    method: "GET",
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div><input class="ip-username" /></div>
+<div><input class="ip-password" /></div>
+<div><button class="btn-login">Login</button></div>
+<div><button class="btn-valid">Valid</button></div>
+
+</body>
+</html>
