@@ -38,6 +38,8 @@ app.use(cookieSession({
 //     saveUninitialized: true,
 //     cookie: { secure: true }
 // }));
+
+
 app.use(flash());
 
 // Set body parser json
