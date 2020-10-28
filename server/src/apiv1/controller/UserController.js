@@ -27,6 +27,7 @@ router.post('/register', async function (req, res) {
     res.send(R.Builder.buildResAPI(R.DEF.OK, resultSave));
 })
 
+
 router.post('/login', async function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
