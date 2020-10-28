@@ -7,7 +7,8 @@ var UserSchema = new mongoose.Schema({
     email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
     hash: String,
     salt: String,
-}, {timestamps: true});
+}, {timestamps: true,
+    versionKey: false});
 
 UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 

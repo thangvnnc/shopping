@@ -18,4 +18,10 @@ TLogSchema.plugin(autoIncrement.plugin, {
 TLogSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
 var TLog = mongoose.model('log', TLogSchema);
+TLog.writeLog = function(message) {
+    console.error(message);
+    var tLog = new TLog();
+    tLog.content = message;
+    tLog.save()
+}
 module.exports = TLog;
