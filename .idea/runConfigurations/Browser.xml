@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Browser" type="PhoneGap" factoryName="PhoneGap/Cordova">
+    <option name="myExecutable" value="C:\Users\ThangPC\AppData\Roaming\npm\cordova.cmd" />
+    <option name="myWorkDir" value="$PROJECT_DIR$" />
+    <option name="myCommand" value="run" />
+    <option name="myPassParent" value="true" />
+    <option name="myPlatform" value="browser" />
+    <option name="myExtraArgs" value="" />
+    <option name="hasTarget" value="false" />
+    <option name="target" value="" />
+    <method v="2">
+      <option name="PhonegapTask" enabled="true" />
+    </method>
+  </configuration>
+</component>
