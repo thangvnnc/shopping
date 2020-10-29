@@ -2,11 +2,9 @@
 .DS_Store
 
 # Client
-node_modules/
-plugins/
-platforms/
+node_modules
+plugins
+platforms
 package-lock.json
 
 # Server
-server/node_modules/
-server/package-lock.json
