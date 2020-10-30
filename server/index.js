@@ -5,6 +5,7 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var cookieSession = require('cookie-session');
+var cors = require('cors')
 var mongoose = require('mongoose');
 var apiv1 = require('./src/apiv1');
 
@@ -13,8 +14,9 @@ const PassDB = 'thang01652608118';
 const HostDB = 'mongodb://' + UserDB + ':' + PassDB + '@ds245647.mlab.com:45647/shop';
 mongoose.connect(HostDB, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, poolSize: 10});
 
-app.set('trust proxy', 1) // trust first proxy
+app.use(cors({credentials: true, origin: 'http://localhost:8000'}));
 
+app.set('trust proxy', 1) // trust first proxy
 app.use(cookieSession({
     secret: 'aBcDeFgHi',
     signed: true,

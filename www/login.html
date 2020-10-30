@@ -50,40 +50,23 @@
                 <p class="card-category">Administrator</p>
             </div>
             <div class="card-body">
-                <form>
+                <form onsubmit="return false;">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="bmd-label-floating">Name</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Email</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
                                 <label class="bmd-label-floating">Username</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control ip-username">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Password</label>
-                                <input type="password" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Confirm password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control ip-password">
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right">Register</button>
+                    <button type="submit" class="btn btn-primary pull-right btn-login">Login</button>
+                    <button type="submit" class="btn btn-primary pull-left btn-register">Register</button>
                     <div class="clearfix"></div>
                 </form>
             </div>
@@ -124,13 +107,16 @@
 </footer>
 
 <!--   Core JS Files   -->
-<script src="assets/js/core/jquery.min.js"></script>
-<script src="assets/js/core/popper.min.js"></script>
-<script src="assets/js/core/bootstrap-material-design.min.js"></script>
-<script src="assets/js/libs/perfect-scrollbar.jquery.min.js"></script>
-<script src="assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
-<script src="assets/js/custom/ejs.min.js"></script>
-<script src="assets/js/custom/register.js"></script>
+<script src="./assets/js/core/jquery.min.js"></script>
+<script src="./assets/js/core/popper.min.js"></script>
+<script src="./assets/js/core/bootstrap-material-design.min.js"></script>
+<script src="./assets/js/libs/perfect-scrollbar.jquery.min.js"></script>
+<script src="./assets/js/libs/bootstrap-notify.js"></script>
+<script src="./assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+<script src="./assets/js/custom/ejs.min.js"></script>
+<script src="assets/js/custom/utils-url.js"></script>
+<script src="./assets/js/custom/message.js"></script>
+<script src="./assets/js/custom/login.js"></script>
 
 </body>
 

@@ -183,6 +183,20 @@ md = {
     });
   },
 
+  showBottomCenterMessage: function(message) {
+    $.notify({
+      icon: "error",
+      message: message
+    }, {
+      type: 'danger',
+      timer: 3000,
+      placement: {
+        from: 'bottom',
+        align: 'center'
+      }
+    });
+  },
+
   initDocumentationCharts: function() {
     if ($('#dailySalesChart').length != 0 && $('#websiteViewsChart').length != 0) {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
