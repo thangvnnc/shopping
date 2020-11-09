@@ -9,7 +9,7 @@ var TLogSchema = new mongoose.Schema({
 }, {timestamps: true});
 
 TLogSchema.plugin(autoIncrement.plugin, {
-    model: 'TLog',
+    model: 'tlog',
     field: 'id',
     startAt: 1000,
     incrementBy: 1

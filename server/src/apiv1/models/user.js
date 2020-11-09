@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var uniqueValidator = require('mongoose-unique-validator');
 var crypto = require('crypto');
 
@@ -7,8 +8,7 @@ var UserSchema = new mongoose.Schema({
     email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
     hash: String,
     salt: String,
-}, {timestamps: true,
-    versionKey: false});
+}, {timestamps: true});
 
 UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
