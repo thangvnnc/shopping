@@ -1,22 +1,15 @@
 var mongoose = require('mongoose');
-var uniqueValidator = require('mongoose-unique-validator');
-var autoIncrement = require('mongoose-auto-increment');
-autoIncrement.initialize(mongoose.connection);
+const Schema = mongoose.Schema;
 
 var PermissionSchema = new mongoose.Schema({
-    id: {type: Number, index: true, unique: true},
-    name: {type: String},
     description: {type: String},
 }, {timestamps: true});
 
-PermissionSchema.plugin(autoIncrement.plugin, {
-    model: 'permission',
-    field: 'id',
-    startAt: 1000,
-    incrementBy: 1
-});
-
-PermissionSchema.plugin(uniqueValidator, {message: 'is already taken.'});
+var UserPermissionSchema = new mongoose.Schema({
+    user: { type: Schema.Types.ObjectId, ref: 'user' },
+    permission: { type: Schema.Types.ObjectId, ref: 'permission' },
+}, {timestamps: true});
 
 var Permission = mongoose.model('permission', PermissionSchema);
-module.exports = {Permission};
+var UserPermission = mongoose.model('user_permission', UserPermissionSchema);
+module.exports = {Permission: Permission, UserPermission: UserPermission};
