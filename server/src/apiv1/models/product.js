@@ -7,10 +7,10 @@ var ProductSchema = new mongoose.Schema({
     discount: {type: String},
     discountKind: {type: Number},
     description: {type: String},
-    auth: {type: String},
-    manufacturer: {type: String},
+    auth: {type: String, index: true},
+    manufacturer: {type: String, index: true},
     links: [{type: String}],
-    company: {type: String},
+    company: {type: String, index: true},
     createdBy: {type: Date},
     updatedBy: {type: Date},
 }, {timestamps: true});
