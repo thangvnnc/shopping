@@ -1,49 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.btn-login').on('click', function() {
-                var username = $('.ip-username').val();
-                var password = $('.ip-password').val();
-                $.ajax({
-                    url: "/login",
-                    data: {
-                        username: username,
-                        password: password
-                    },
-                    method: "GET",
-                    xhrFields: {
-                        withCredentials: true
-                    },
-                    success: function (data) {
-                        console.log(data);
-                    }
-                });
-            });
-
-            $('.btn-valid').on('click', function() {
-                $.ajax({
-                    url: "/testAuth",
-                    method: "GET",
-                    xhrFields: {
-                        withCredentials: true
-                    },
-                    success: function (data) {
-                        console.log(data);
-                    }
-                });
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="./assets/css/jquery.loadingModal.min.css">
 </head>
 <body>
 
-<div><input class="ip-username" /></div>
-<div><input class="ip-password" /></div>
-<div><button class="btn-login">Login</button></div>
-<div><button class="btn-valid">Valid</button></div>
-
+<div id="wrapper">
+    <script src="./assets/js/core/jquery.min.js"></script>
+    <script src="./assets/js/libs/jquery.loadingModal.min.js"></script>
+    <script src="./assets/js/libs/bootstrap-notify.js"></script>
+    <script src="./assets/js/material-dashboard.js?v=2.1.1"></script>
+    <script src="assets/js/custom/utils-url.js"></script>
+    <script src="./assets/js/custom/message.js"></script>
+    <script>
+        $('body').loadingModal({text: 'Loading...', backgroundColor:'#9c27b0'});
+        var delay = function(ms){ return new Promise(function(r) { setTimeout(r, ms) }) };
+        var time = 1000;
+        delay(time).then(function () {
+            AjaxReq({
+                url: URL_API_USER_SESSION_STATE,
+                success: function (data) {
+                    if (data.code !== R.DEF.OK.code) {
+                        Href(URL_HTML_LOGIN);
+                        return;
+                    }
+                    Href(URL_HTML_HOME);
+                },
+                error: function (err) {
+                    md.showBottomCenterMessage(err.message);
+                }
+            })
+        })
+    </script>
+</div>
 </body>
 </html>
