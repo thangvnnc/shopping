@@ -9,37 +9,70 @@ var {Permission, UserPermission} = require('./models/permission');
 
 setTestData();
 async function setTestData() {
-    await setTestDataUser();
+    try {
+        var users = await setUsers();
+        var user = users[0];
+        console.log("user._id  = " + user._id);
+
+        var categorys = await setCategorys(user._id);
+        var category = categorys[0];
+        console.log("category._id  = " + category._id);
+
+        var products = setProducts(category._id, user._id);
+        var product = products[0];
+    }
+    catch(err) {
+        console.log(err);
+        return;
+    }
+    console.log('set data test OK');
 }
 
-async function setTestDataUser() {
-    // Delete all user
-    try {
-        await User.deleteMany()
+async function setProducts(category, createdBy) {
+    await Product.deleteMany();
+    for(var idx = 0; idx < 2; idx++) {
+        var product = new Product();
+        product.category = category;
+        product.name = "product" + idx;
+        product.imageUrls = ["url " + idx];
+        product.price = 120000;
+        product.discount = 120000;
+        product.discountKind = 1;
+        product.description = "product description " + idx;
+        product.auth = "product auth " + idx;
+        product.manufacturer = "product manufacturer " + idx;
+        product.links = ["link " + idx];
+        product.company = "product company " + idx;
+        product.createdBy = createdBy;
+        product.updatedBy = createdBy;
+        await product.save();
     }
-    catch(err) {
-        console.log(err);
-        return;
-    }
+    var products = await Product.find();
+    return products;
+}
 
-    let user = new User();
-    user.username = 'test';
-    user.email = 'test@gmail.com';
-    user.setPassword('123456');
-    try {
+async function setUsers() {
+    await User.deleteMany()
+    for(var idx = 0; idx < 2; idx++) {
+        var user = new User();
+        user.username = 'user' + idx;
+        user.email = 'user'+ idx + '@gmail.com';
+        user.setPassword('123456');
         await user.save();
     }
-    catch(err) {
-        console.log(err);
-        return;
-    }
+    var users = await User.find();
+    return users;
+}
 
-    try {
-        var users = await User.find({});
-        console.log(JSON.stringify(users));
+async function setCategorys(createdBy) {
+    await Category.deleteMany();
+    for(var idx = 0; idx < 2; idx++) {
+        var category = new Category();
+        category.name = "category" + idx;
+        category.createdBy = createdBy;
+        category.updatedBy = createdBy;
+        await category.save();
     }
-    catch(err) {
-        console.log(err);
-        return;
-    }
+    var categorys = await Category.find();
+    return categorys;
 }

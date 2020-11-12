@@ -15,6 +15,7 @@ var ProductSchema = new mongoose.Schema({
     state: {type: Number, default: 1},
     createdBy: { type: Schema.Types.ObjectId, ref: 'user' },
     updatedBy: { type: Schema.Types.ObjectId, ref: 'user' },
+    category: { type: Schema.Types.ObjectId, ref: 'category' },
 }, {timestamps: true});
 
 var Product = mongoose.model('product', ProductSchema);
