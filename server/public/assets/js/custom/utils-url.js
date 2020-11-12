@@ -3,7 +3,7 @@ const URL_HTML_REGISTER = 'register.html';
 const URL_HTML_HOME = 'home.html';
 
 const URL_METHODS = { POST: 'POST', GET: 'GET' };
-const URL_API_BASE = 'http://localhost:99/apiv1';
+const URL_API_BASE = 'http://192.168.1.111:99/apiv1';
 const URL_API_LOGIN = URL_API_BASE + '/user/login';
 const URL_API_LOGOUT = URL_API_BASE + '/user/logout';
 

@@ -13,8 +13,20 @@ const UserDB = 'thang';
 const PassDB = 'thang01652608118';
 const HostDB = 'mongodb://' + UserDB + ':' + PassDB + '@ds245647.mlab.com:45647/shop';
 mongoose.connect(HostDB, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, poolSize: 10, retryWrites: false});
-
-app.use(cors({credentials: true, origin: 'http://localhost:8000'}));
+// var domainsCROS = ['http://192.168.1.111:99', 'http://192.168.1.111:8000'];
+var corsOptions = {
+    credentials: true,
+    origin: function (origin, callback) {
+        // any domain
+        callback(null, true);
+        // if (domainsCROS.indexOf(origin) !== -1) {
+        //     callback(null, true)
+        // } else {
+        //     callback(new Error('Not allowed by CORS'))
+        // }
+    }
+}
+app.use(cors(corsOptions));
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(cookieSession({
