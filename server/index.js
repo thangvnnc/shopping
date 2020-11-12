@@ -12,7 +12,7 @@ var apiv1 = require('./src/apiv1');
 const UserDB = 'thang';
 const PassDB = 'thang01652608118';
 const HostDB = 'mongodb://' + UserDB + ':' + PassDB + '@ds245647.mlab.com:45647/shop';
-mongoose.connect(HostDB, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, poolSize: 10});
+mongoose.connect(HostDB, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, poolSize: 10, retryWrites: false});
 
 app.use(cors({credentials: true, origin: 'http://localhost:8000'}));
 

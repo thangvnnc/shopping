@@ -4,11 +4,15 @@ var uniqueValidator = require('mongoose-unique-validator');
 var crypto = require('crypto');
 
 var UserSchema = new mongoose.Schema({
-    username: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
-    email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
+    // username: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
+    // email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
+    username: {type: String, lowercase: true, unique: true, index: true},
+    email: {type: String, lowercase: true, unique: true, index: true},
     hash: String,
     salt: String,
-    userpermissions: [{ type: Schema.Types.ObjectId, ref: 'user_permission' }]
+    state: {type: Number, default: 1},    
+    createdBy: { type: Schema.Types.ObjectId, ref: 'user', default: null },
+    updatedBy: { type: Schema.Types.ObjectId, ref: 'user', default: null },
 }, {timestamps: true});
 
 UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});

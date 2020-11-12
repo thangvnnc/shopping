@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var ProductSchema = new mongoose.Schema({
     name: {type: String, index: true},
@@ -11,8 +12,9 @@ var ProductSchema = new mongoose.Schema({
     manufacturer: {type: String, index: true},
     links: [{type: String}],
     company: {type: String, index: true},
-    createdBy: {type: Date},
-    updatedBy: {type: Date},
+    state: {type: Number, default: 1},
+    createdBy: { type: Schema.Types.ObjectId, ref: 'user' },
+    updatedBy: { type: Schema.Types.ObjectId, ref: 'user' },
 }, {timestamps: true});
 
 var Product = mongoose.model('product', ProductSchema);
