@@ -640,9 +640,10 @@
     async function builder() {
         await renderEjsJquery('./head.ejs', null, 'head');
         await renderEjsJquery('./footer.ejs', null, 'footer');
-        setTimeout(function () {
+        $(document).ready(function(e) {
             $('body').css('display', 'block');
-        }, 100);
+        })
+        // setTimeout(function () {$('body').css('display', 'block');}, 100);
     }
 </script>
 </html>
