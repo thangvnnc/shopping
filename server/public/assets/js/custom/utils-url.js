@@ -11,10 +11,10 @@ const URL_API_USER_SESSION_STATE = URL_API_BASE + '/user/session/state';
 const Href = function (url) {
     window.open(url, '_self');
 }
-const AjaxReq = function (obj) {
+const AjaxReq = function (obj, method = URL_METHODS.POST) {
     $.ajax({
         url: obj.url,
-        method: URL_METHODS.POST,
+        method: method,
         async:true,
         // crossDomain: true,
         xhrFields: {
